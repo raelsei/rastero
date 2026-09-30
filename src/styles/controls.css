@@ -150,6 +150,20 @@
   text-underline-offset: 3px;
 }
 
+/* Neutral text link for secondary destinations (source, licenses); cyan stays with the actions. */
+.quiet-link {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: var(--hairline-strong);
+  text-underline-offset: 3px;
+  border-radius: var(--radius-sm);
+}
+
+.quiet-link:hover {
+  color: var(--ink);
+  text-decoration-color: currentColor;
+}
+
 /* Popover menu (native popover API; escapes every overflow container). */
 .menu {
   margin: 0;

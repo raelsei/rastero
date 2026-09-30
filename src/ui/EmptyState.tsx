@@ -1,11 +1,12 @@
 import { FolderOpen, ImagePlus } from 'lucide-react'
+import { LICENSES_URL, SOURCE_URL } from './links'
 import { LogoMark } from './Logo'
 import { loadSamples, pickFiles } from './pickers'
 import './EmptyState.css'
 
 const IS_MAC = typeof navigator !== 'undefined' && /Mac|iPhone|iPad/.test(navigator.platform)
 
-/** First run: one clear drop target, the two ways in, and what Rastero reads and writes. */
+/** First run: one clear drop target, the two ways in, what Rastero reads and writes, and where its source is. */
 export function EmptyState({ dragging }: { dragging: boolean }) {
   // Phones can't drop files, paste from a keyboard, or pick folders; offer what they can do.
   const touchOnly = window.matchMedia('(hover: none) and (pointer: coarse)').matches
@@ -45,6 +46,19 @@ export function EmptyState({ dragging }: { dragging: boolean }) {
         <div>
           <dt>Runs</dt>
           <dd>in your browser · offline after first use · nothing is uploaded</dd>
+        </div>
+        <div>
+          <dt>Source</dt>
+          <dd>
+            free software, GPL-3.0 ·{' '}
+            <a className="quiet-link" href={SOURCE_URL} target="_blank" rel="noreferrer">
+              GitHub
+            </a>{' '}
+            ·{' '}
+            <a className="quiet-link" href={LICENSES_URL} target="_blank" rel="noreferrer">
+              licenses
+            </a>
+          </dd>
         </div>
       </dl>
     </main>

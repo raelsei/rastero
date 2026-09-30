@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.1.0",
   "description": "Compress images in the browser: every format and quality measured side by side. Nothing leaves your device.",
-  "license": "MIT",
+  "license": "GPL-3.0-or-later",
   "author": "Koray Guler (https://koray.dev)",
   "homepage": "https://koray.dev/rastero/",
   "repository": {

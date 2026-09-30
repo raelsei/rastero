@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 import { X } from 'lucide-react'
 import { useSession } from '../state/session'
 import { useViewer } from '../state/viewer'
+import { LICENSES_URL, SOURCE_URL } from './links'
 import './Overlays.css'
 
 const NOTICE_MS = 6000
@@ -71,6 +72,16 @@ export function Shortcuts() {
           </div>
         ))}
       </dl>
+      <p className="shortcuts-foot">
+        Free software (GPL-3.0) ·{' '}
+        <a className="quiet-link" href={SOURCE_URL} target="_blank" rel="noreferrer">
+          Source
+        </a>{' '}
+        ·{' '}
+        <a className="quiet-link" href={LICENSES_URL} target="_blank" rel="noreferrer">
+          Licenses
+        </a>
+      </p>
     </div>
   )
 }

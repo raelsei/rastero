@@ -106,16 +106,34 @@ src/state/    session store, pick logic, settings, IndexedDB persistence
 src/ui/       React components
 sw/           service worker template (filled in at build time)
 public/       manifest, icons, favicon, social card, sample photos
+licenses/     upstream codec licenses the npm packages don't ship (merged into licenses.txt at build time)
 docs/         README screenshots
 ```
 
-## Licenses
+## License
 
-Rastero's own code is MIT licensed (see [LICENSE](LICENSE)). The built app bundles third-party codecs under their own licenses:
+Rastero is free software, licensed under the [GNU General Public License v3.0 or later](LICENSE).
 
-- jSquash codecs (MozJPEG, libwebp, libavif, libjxl, OxiPNG): Apache-2.0 and the upstream codec licenses
-- [libimagequant](https://github.com/ImageOptim/libimagequant), used for lossy PNG: GPL-3.0-or-later. A deployed build that includes it is subject to the GPL's terms.
-- [libheif](https://github.com/strukturag/libheif) via libheif-js, used for HEIC input: LGPL-3.0, loaded as a separate file
+Copyright (C) 2026 Koray Guler
+
+**Why GPL:** lossy PNG uses [libimagequant](https://github.com/ImageOptim/libimagequant) (the engine behind pngquant), which is GPL-3.0-or-later. Every build that includes it is a GPL work as a whole, so the project uses one license instead of MIT with an exception. In practice: use, change and redeploy Rastero freely; if you distribute it or a modified version, including by hosting it (the browser downloads the code), keep it under the GPL and publish your source.
+
+Everything else in the build is under permissive or GPL-compatible licenses:
+
+| Component | Used for | License |
+|---|---|---|
+| [jSquash](https://github.com/jamsinclair/jSquash) codecs | encoders and decoders | Apache-2.0 |
+| [libavif](https://github.com/AOMediaCodec/libavif) + [libaom](https://aomedia.googlesource.com/aom) | AVIF | BSD-2-Clause (+ AOMedia patent license) |
+| [libwebp](https://chromium.googlesource.com/webm/libwebp) | WebP | BSD-3-Clause |
+| [MozJPEG](https://github.com/mozilla/mozjpeg) | JPEG | IJG, BSD-3-Clause, zlib |
+| [OxiPNG](https://github.com/shssoichiro/oxipng) | PNG | MIT |
+| [libjxl](https://github.com/libjxl/libjxl) (+ Highway, skcms, Brotli) | JPEG XL | BSD-3-Clause (+ Apache-2.0/BSD, MIT) |
+| [libimagequant](https://github.com/ImageOptim/libimagequant) | lossy PNG | GPL-3.0-or-later |
+| [libheif](https://github.com/strukturag/libheif) + [libde265](https://github.com/strukturag/libde265) via libheif-js | HEIC input | LGPL-3.0 |
+| React, Zustand, client-zip, Lucide | UI, ZIP export, icons | MIT, ISC |
+| [Inter](https://rsms.me/inter/) | typeface | OFL-1.1 |
+
+The full texts ship with every build as `licenses.txt`, generated from the installed packages plus the upstream codec licenses in [`licenses/`](licenses/). The app links to it and to this repository from the start screen and the keyboard panel.
 
 The sample photos in `public/samples/` and the photos in the screenshots are AI-generated.
 

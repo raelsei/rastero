@@ -346,6 +346,7 @@ Solid, compact and legible; every button is an object with a clear label.
 - **Small:** 30px tall, 12px sides, 14px text, 15px icons (readout Download, Apply to all).
 - **Split:** a main action fused to a 32px caret that opens a menu; ghost halves share a border, primary halves divide with a faint ink inset line.
 - **Link:** cyan text with an underline on hover (Reset, sample photos); disabled drops to Ink 3.
+- **Quiet link:** inherits the surrounding ink with a strong-hairline underline that turns to the text colour on hover; for secondary destinations (source code, licenses), never cyan.
 - **Disabled:** 40% opacity (35% for icon buttons). Reset stays visible and disabled until a result is tuned.
 - **Focus:** a 2px Process Cyan outline at 2px offset on every focusable element.
 
@@ -389,7 +390,7 @@ Square 1:1 crops from the same region of every result, grouped by format under "
 A 48px solid object at the bottom of the inspector: download icon, the verb, then the exact file name and size right-aligned in Ink 2.
 
 ### Empty State
-The 52px logo mark, one Display headline ("Drop images or a folder"), a Title lead, Choose images (primary) and Choose folder (solid) at 42px, a paste/sample hint, and a Reads / Writes / Runs facts row at the bottom. Dragging tints the whole surface and draws an inset cyan ring; there is no dashed box.
+The 52px logo mark, one Display headline ("Drop images or a folder"), a Title lead, Choose images (primary) and Choose folder (solid) at 42px, a paste/sample hint, and a Reads / Writes / Runs / Source facts row at the bottom; Source carries the GPL-3.0 note and quiet links to the repository and licenses.txt (the keyboard panel repeats them in a hairline-topped footer). Dragging tints the whole surface and draws an inset cyan ring; there is no dashed box.
 
 ## Do's and Don'ts
 

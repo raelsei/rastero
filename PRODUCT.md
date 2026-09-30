@@ -8,7 +8,7 @@ web
 
 ## Stack
 
-Vite + React + TypeScript, Bun as package manager, script runner and test runner. Image codecs are WebAssembly (jSquash: MozJPEG, libwebp, libavif, OxiPNG, libjxl; libimagequant; libheif for HEIC input) running in a Web Worker pool. Deployed as a static site on GitHub Pages at https://koray.dev/rastero/ (relative asset base, CSP as a meta tag). License: MIT.
+Vite + React + TypeScript, Bun as package manager, script runner and test runner. Image codecs are WebAssembly (jSquash: MozJPEG, libwebp, libavif, OxiPNG, libjxl; libimagequant; libheif for HEIC input) running in a Web Worker pool. Deployed as a static site on GitHub Pages at https://koray.dev/rastero/ (relative asset base, CSP as a meta tag). License: GPL-3.0-or-later, because the bundled libimagequant (lossy PNG) is GPL; the build ships every third-party license in licenses.txt and the app links to its source.
 
 ## Users
 
