@@ -1,0 +1,305 @@
+.proof-area {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+}
+
+.proof-area[data-compact='true'] {
+  flex: none;
+  min-height: 280px;
+}
+
+.proof {
+  position: absolute;
+}
+
+/* Caption left, result readout right, level with the proof's top edge. */
+.proof-head {
+  position: absolute;
+  container-type: inline-size;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  height: 30px;
+  padding: 0 0 0 8px;
+  font-size: var(--text-lg);
+  white-space: nowrap;
+}
+
+.proof-caption,
+.proof-readout {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  min-width: 0;
+  margin: 0;
+}
+
+.proof-caption {
+  overflow: hidden;
+  color: var(--ink-2);
+}
+
+.proof-name {
+  min-width: 3ch;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: var(--ink);
+}
+
+.proof-caption .num {
+  flex: none;
+}
+
+.proof-readout {
+  flex: none;
+  gap: 8px;
+  color: var(--ink-2);
+}
+
+.proof-readout-dot {
+  color: var(--ink-3);
+}
+
+.proof-readout-muted {
+  color: var(--ink-3);
+}
+
+.proof-download {
+  margin-left: 8px;
+}
+
+/* Phones download from the bottom action bar. */
+@media (max-width: 860px) {
+  .proof-download {
+    display: none;
+  }
+}
+
+/* Narrow heads keep the file name and the readout; dimensions, size and the button label step aside. */
+@container (max-width: 600px) {
+  .proof-caption .num {
+    display: none;
+  }
+
+  .proof-caption,
+  .proof-readout {
+    font-size: var(--text-md);
+  }
+}
+
+@container (max-width: 420px) {
+  .proof-download-label {
+    display: none;
+  }
+
+  .proof-download {
+    width: 30px;
+    padding: 0;
+  }
+}
+
+.proof-canvas {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  border-radius: 2px;
+  background: #111;
+  box-shadow: 0 0 0 1px rgb(255 255 255 / 0.06);
+  /* Vertical swipes scroll the page on phones; sideways drags move the divider. */
+  touch-action: pan-y;
+  cursor: ew-resize;
+  user-select: none;
+}
+
+/* Transparent sources sit on the image editor's checkerboard so their alpha reads as alpha. */
+.proof-canvas[data-alpha='true'] {
+  background: repeating-conic-gradient(#2b2b2b 0 25%, #212121 0 50%) 0 0 / 16px 16px;
+}
+
+.proof-canvas[data-zoom='actual'] {
+  cursor: grab;
+  touch-action: none;
+}
+
+.proof-canvas[data-zoom='actual']:active {
+  cursor: grabbing;
+}
+
+.proof-layer {
+  position: absolute;
+  inset: 0;
+}
+
+.proof-layer img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  max-width: none;
+  transform-origin: 0 0;
+  pointer-events: none;
+}
+
+/* Soft skeleton: the small thumbnail, blurred, holds the frame while the full image decodes. */
+.proof-skeleton {
+  filter: blur(14px) saturate(0.9);
+  opacity: 0.9;
+}
+
+.proof-sharp {
+  transition: opacity 180ms var(--ease-out);
+}
+
+.proof-sharp[data-ready='false'] {
+  opacity: 0;
+}
+
+.proof-divider {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 0;
+  border-left: 1px solid #f4f4f4;
+  pointer-events: none;
+}
+
+.proof-handle {
+  position: absolute;
+  top: 50%;
+  left: -17px;
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: #f4f4f4;
+  color: #1a1a1a;
+  box-shadow: 0 2px 10px rgb(0 0 0 / 0.35);
+  translate: 0 -50%;
+  pointer-events: auto;
+  cursor: ew-resize;
+}
+
+.proof-handle svg {
+  width: 18px;
+  height: 18px;
+}
+
+.proof-tools {
+  position: absolute;
+  top: 50%;
+  right: 14px;
+  display: grid;
+  gap: 2px;
+  padding: 4px;
+  border: 1px solid var(--hairline);
+  border-radius: 10px;
+  background: var(--rail);
+  translate: 0 -50%;
+}
+
+.proof-tool-text {
+  font-size: var(--text-xs);
+  font-weight: 600;
+}
+
+.proof-tools-sep {
+  height: 1px;
+  margin: 3px 6px;
+  background: var(--hairline);
+}
+
+.proof-area[data-compact='true'] .proof-tools {
+  top: auto;
+  right: 50%;
+  bottom: 4px;
+  display: flex;
+  translate: 50% 0;
+}
+
+.proof-area[data-compact='true'] .proof-tools-sep {
+  width: 1px;
+  height: auto;
+  margin: 6px 3px;
+}
+
+/* Touch-only devices have no keyboard shortcuts to show. */
+@media (hover: none) and (pointer: coarse) {
+  .proof-tool-keys {
+    display: none;
+  }
+}
+
+.proof-wait {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  gap: 16px;
+  color: var(--ink-2);
+  font-size: var(--text-md);
+}
+
+.proof-wait-frame {
+  width: min(52vw, 520px);
+  aspect-ratio: 3 / 2;
+  border-radius: 2px;
+  background: linear-gradient(100deg, #1c1c1c 30%, #242424 50%, #1c1c1c 70%) 0 0 / 300% 100%;
+  animation: skeleton-sweep 1.6s var(--ease-out) infinite;
+}
+
+.proof-error {
+  gap: 6px;
+}
+
+.proof-error strong {
+  color: var(--ink);
+  font-weight: 500;
+}
+
+.loupe {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  display: flex;
+  gap: 1px;
+  padding: 1px;
+  border-radius: var(--radius);
+  background: #4a4a4a;
+  pointer-events: none;
+}
+
+.loupe-cell {
+  position: relative;
+}
+
+.loupe-view {
+  background-color: #111;
+  background-repeat: no-repeat;
+  image-rendering: pixelated;
+}
+
+.loupe-cell:first-child .loupe-view {
+  border-radius: var(--radius) 0 0 var(--radius);
+}
+
+.loupe-cell:last-child .loupe-view {
+  border-radius: 0 var(--radius) var(--radius) 0;
+}
+
+.loupe-cell:only-child .loupe-view {
+  border-radius: var(--radius);
+}
+
+.loupe-label {
+  position: absolute;
+  left: 8px;
+  bottom: 8px;
+  padding: 2px 6px;
+  border-radius: var(--radius-sm);
+  background: rgb(20 20 20 / 0.85);
+  color: var(--ink);
+  font-size: var(--text-xs);
+}

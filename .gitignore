@@ -1,0 +1,33 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Design-process scratch (captures, comp measurement, mockups, raster plates); DESIGN.md and
+# .impeccable/design.json are the durable record and stay tracked.
+.impeccable/review/
+.impeccable/build/
+.impeccable/mocks/
+.impeccable/prompts/
+.impeccable/live/
+/assets/

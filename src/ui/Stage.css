@@ -1,0 +1,31 @@
+.stage {
+  grid-area: main;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 0;
+}
+
+.stage-controls {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 12px;
+  padding: 10px 0 36px;
+}
+
+@media (max-height: 760px) {
+  .stage-controls {
+    gap: 8px;
+    padding: 4px 0 16px;
+  }
+}
+
+@media (max-width: 860px) {
+  .stage {
+    overflow-y: auto;
+  }
+
+  .stage-controls {
+    padding-bottom: 24px;
+  }
+}

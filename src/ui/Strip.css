@@ -1,0 +1,206 @@
+.strip {
+  padding: 0 20px 0 34px;
+}
+
+.strip-groups {
+  display: flex;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scrollbar-width: thin;
+  padding-bottom: 4px;
+}
+
+.strip-groups[data-overflow='true'] {
+  mask-image: linear-gradient(to right, currentColor calc(100% - 56px), transparent);
+}
+
+.strip-group {
+  display: grid;
+  grid-template-rows: auto auto;
+  gap: 10px;
+  flex: var(--n, 1) 1 0;
+  min-width: max-content;
+  padding: 0 12px;
+}
+
+.strip-group:first-child {
+  padding-left: 0;
+}
+
+.strip-group:last-child {
+  padding-right: 0;
+}
+
+.strip-group + .strip-group {
+  border-left: 1px solid var(--hairline);
+}
+
+.strip-label {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  height: 20px;
+  font-size: var(--text-md);
+  white-space: nowrap;
+}
+
+.strip-count {
+  color: var(--ink-2);
+  font-size: var(--text-sm);
+}
+
+.strip-patches {
+  display: flex;
+  gap: 10px;
+}
+
+/* Patches share space down to 72px, then the strip scrolls instead of truncating figures. */
+.patch {
+  container-type: inline-size;
+  display: grid;
+  gap: 2px;
+  flex: 1 1 0;
+  min-width: 60px;
+  max-width: 92px;
+  text-align: left;
+  border-radius: var(--radius-sm);
+}
+
+.patch:disabled {
+  cursor: default;
+}
+
+.patch-frame {
+  position: relative;
+  display: grid;
+  place-items: center;
+  aspect-ratio: 1;
+  overflow: hidden;
+  border-radius: var(--radius-sm);
+  background: #222;
+  outline: 1px solid transparent;
+  outline-offset: 1px;
+  transition: outline-color var(--fast) var(--ease-out);
+}
+
+.patch-frame[data-alpha='true'] {
+  background: repeating-conic-gradient(#2b2b2b 0 25%, #212121 0 50%) 0 0 / 12px 12px;
+}
+
+.patch-frame img {
+  max-width: none;
+  animation: patch-land var(--med) var(--ease-out);
+}
+
+@keyframes patch-land {
+  from {
+    opacity: 0;
+  }
+}
+
+.patch:not(:disabled):hover .patch-frame {
+  outline-color: #4a4a4a;
+}
+
+.patch[aria-pressed='true'] .patch-frame {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+}
+
+.patch:focus-visible {
+  outline: none;
+}
+
+.patch:focus-visible .patch-frame {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.patch-check {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  display: grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: var(--accent-ink);
+  box-shadow: 0 0 0 2px rgb(6 37 48 / 0.55);
+}
+
+.patch-check svg {
+  width: 14px;
+  height: 14px;
+  stroke-width: 3;
+}
+
+.patch-wait {
+  display: grid;
+  justify-items: center;
+  gap: 8px;
+  width: 70%;
+  color: var(--ink-3);
+  font-size: var(--text-xs);
+}
+
+.patch-wait .progress-line {
+  width: 100%;
+}
+
+.patch[data-status='error'] .patch-wait {
+  color: var(--danger);
+}
+
+.patch-q,
+.patch-size {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: var(--ink-2);
+  font-size: var(--text-md);
+}
+
+.patch-q {
+  margin-top: 6px;
+}
+
+.patch-tuned {
+  color: var(--ink-3);
+  font-size: var(--text-xs);
+}
+
+@container (max-width: 84px) {
+  .patch-q,
+  .patch-size {
+    font-size: 0.8125rem;
+  }
+}
+
+@container (max-width: 66px) {
+  .patch-q,
+  .patch-size {
+    font-size: 0.75rem;
+  }
+}
+
+.patch[aria-pressed='true'] .patch-q,
+.patch[aria-pressed='true'] .patch-size {
+  color: var(--accent);
+}
+
+@media (max-width: 860px) {
+  .strip {
+    padding: 0 14px;
+  }
+
+  .strip-group {
+    flex: none;
+  }
+
+  .patch {
+    flex: none;
+    width: 72px;
+  }
+}

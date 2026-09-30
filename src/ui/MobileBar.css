@@ -1,0 +1,53 @@
+.mobile-bar {
+  display: none;
+}
+
+@media (max-width: 860px) {
+  .mobile-bar {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 5;
+    display: flex;
+    gap: 10px;
+    padding: 10px max(14px, env(safe-area-inset-right)) max(10px, env(safe-area-inset-bottom)) max(14px, env(safe-area-inset-left));
+    border-top: 1px solid var(--hairline);
+    background: var(--ground);
+  }
+
+  .mobile-bar .btn {
+    height: 48px;
+  }
+
+  .mobile-bar-one {
+    flex: 1 1 0;
+    min-width: 0;
+    justify-content: flex-start;
+    padding: 0 14px;
+  }
+
+  .mobile-bar-text {
+    display: grid;
+    min-width: 0;
+    text-align: left;
+    line-height: 1.2;
+  }
+
+  .mobile-bar-detail {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: var(--ink-2);
+    font-size: var(--text-xs);
+    font-weight: 400;
+  }
+
+  .mobile-bar-all {
+    flex: none;
+  }
+
+  .mobile-bar-all > .btn:first-child {
+    padding: 0 14px;
+  }
+}

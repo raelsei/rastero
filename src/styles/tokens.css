@@ -1,0 +1,43 @@
+/* Proofing booth: true-neutral graphite (zero hue) so only the photographs carry colour. */
+:root {
+  color-scheme: dark;
+
+  --ground: #181818;
+  --rail: #1a1a1a;
+  --raised: #202020;
+  /* Floating layers (menus, notices, panels) rise by tone and hairline only, no drop shadow. */
+  --float: #242424;
+  --hover: #222222;
+  --selected: #292929;
+  --hairline: #2c2c2c;
+  --hairline-strong: #3a3a3a;
+
+  --ink: #ececec;
+  --ink-2: #a3a3a3;
+  --ink-3: #8a8a8a;
+
+  --accent: #19caf7;
+  --accent-hover: #4dd6f9;
+  --accent-press: #10b3dc;
+  --accent-ink: #062530;
+  --accent-soft: rgb(25 202 247 / 0.14);
+  --danger: #ff7a6b;
+
+  --font: 'Inter Variable', 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --text-xs: 0.8125rem; /* 13 */
+  --text-sm: 0.875rem; /* 14 */
+  --text-md: 0.9375rem; /* 15 */
+  --text-lg: 1rem; /* 16 */
+  --text-xl: 1.25rem; /* 20 */
+
+  --radius-sm: 4px;
+  --radius: 6px;
+  --radius-lg: 8px;
+
+  --topbar-h: 54px;
+  --rail-w: 305px;
+
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --fast: 150ms;
+  --med: 220ms;
+}

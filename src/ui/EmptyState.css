@@ -1,0 +1,101 @@
+.empty {
+  grid-area: rail / rail / main / main;
+  position: relative;
+  display: grid;
+  grid-template-rows: 1fr auto;
+  justify-items: center;
+  padding: 48px 32px 28px;
+  transition: background-color var(--med) var(--ease-out);
+}
+
+/* Dragging over the window: the whole surface answers with a quiet tone shift and an accent ring. */
+.empty[data-dragging='true'] {
+  background: #1a1d1e;
+  box-shadow: inset 0 0 0 2px rgb(25 202 247 / 0.55);
+}
+
+.empty-panel {
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  gap: 14px;
+  max-width: 560px;
+  text-align: center;
+}
+
+.empty-panel .logo-mark {
+  margin-bottom: 10px;
+}
+
+.empty-panel h1 {
+  margin: 0;
+  font-size: 1.75rem;
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  line-height: 1.2;
+}
+
+.empty-panel > p {
+  margin: 0;
+  max-width: 44ch;
+  color: var(--ink-2);
+  font-size: var(--text-lg);
+}
+
+.empty-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.empty-actions .btn {
+  height: 42px;
+  padding: 0 20px;
+}
+
+.empty-panel .empty-hint {
+  margin-top: 6px;
+  color: var(--ink-3);
+  font-size: var(--text-sm);
+}
+
+.empty-hint .link-btn {
+  font-size: var(--text-sm);
+}
+
+.empty-facts {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px 40px;
+  margin: 0;
+  font-size: var(--text-sm);
+}
+
+.empty-facts div {
+  display: flex;
+  gap: 10px;
+}
+
+.empty-facts dt {
+  color: var(--ink-3);
+}
+
+.empty-facts dd {
+  margin: 0;
+  color: var(--ink-2);
+}
+
+@media (max-width: 860px) {
+  .empty-panel h1 {
+    font-size: var(--text-xl);
+  }
+
+  .empty-facts {
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+  }
+}

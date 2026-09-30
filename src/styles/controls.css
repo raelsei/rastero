@@ -1,0 +1,362 @@
+/* Shared control vocabulary: one button shape, one menu, one slider across every view. */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 35px;
+  padding: 0 16px;
+  border-radius: var(--radius);
+  font-size: var(--text-md);
+  font-weight: 500;
+  white-space: nowrap;
+  transition:
+    background-color var(--fast) var(--ease-out),
+    border-color var(--fast) var(--ease-out),
+    color var(--fast) var(--ease-out);
+}
+
+.btn svg {
+  width: 16px;
+  height: 16px;
+  flex: none;
+}
+
+.btn-ghost {
+  border: 1px solid var(--hairline-strong);
+  color: var(--ink);
+}
+
+.btn-ghost:hover:not(:disabled) {
+  background: var(--hover);
+  border-color: #4a4a4a;
+}
+
+.btn-ghost:active:not(:disabled) {
+  background: var(--selected);
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: var(--accent-ink);
+}
+
+.btn-primary:hover:not(:disabled) {
+  background: var(--accent-hover);
+}
+
+.btn-primary:active:not(:disabled) {
+  background: var(--accent-press);
+}
+
+/* Solid neutral: a real object for secondary actions (download one file), never the cyan primary. */
+.btn-solid {
+  background: #2a2a2a;
+  color: var(--ink);
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.06);
+}
+
+.btn-solid:hover:not(:disabled) {
+  background: #333;
+}
+
+.btn-solid:active:not(:disabled) {
+  background: #262626;
+}
+
+.btn-sm {
+  height: 30px;
+  gap: 6px;
+  padding: 0 12px;
+  font-size: var(--text-sm);
+}
+
+.btn-sm svg {
+  width: 15px;
+  height: 15px;
+}
+
+.btn:disabled {
+  opacity: 0.4;
+}
+
+/* Split button: main action plus a caret that opens its menu. */
+.split {
+  display: inline-flex;
+  position: relative;
+}
+
+.split > .btn:first-child {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.split > .btn + .btn {
+  width: 32px;
+  padding: 0;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.split > .btn-ghost + .btn-ghost {
+  border-left-color: transparent;
+}
+
+.split > .btn-primary + .btn-primary {
+  box-shadow: inset 1px 0 0 rgb(6 37 48 / 0.28);
+}
+
+.icon-btn {
+  display: inline-grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius);
+  color: var(--ink-2);
+  transition:
+    background-color var(--fast) var(--ease-out),
+    color var(--fast) var(--ease-out);
+}
+
+.icon-btn svg {
+  width: 17px;
+  height: 17px;
+}
+
+.icon-btn:hover:not(:disabled) {
+  background: var(--hover);
+  color: var(--ink);
+}
+
+.icon-btn[aria-pressed='true'] {
+  background: var(--selected);
+  color: var(--accent);
+}
+
+.icon-btn:disabled {
+  opacity: 0.35;
+}
+
+.link-btn {
+  color: var(--accent);
+  font-size: var(--text-md);
+  font-weight: 500;
+  border-radius: var(--radius-sm);
+}
+
+.link-btn:hover {
+  color: var(--accent-hover);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* Popover menu (native popover API; escapes every overflow container). */
+.menu {
+  margin: 0;
+  inset: auto;
+  min-width: 240px;
+  padding: 6px;
+  border: 1px solid var(--hairline-strong);
+  border-radius: var(--radius-lg);
+  background: var(--float);
+  color: var(--ink);
+  font-size: var(--text-sm);
+}
+
+.menu-label {
+  padding: 8px 10px 4px;
+  color: var(--ink-3);
+  font-size: var(--text-xs);
+  font-weight: 500;
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  min-height: 34px;
+  padding: 6px 10px;
+  border-radius: var(--radius-sm);
+  text-align: left;
+}
+
+.menu-item:hover:not(:disabled),
+.menu-item:focus-visible {
+  background: var(--selected);
+  outline: none;
+}
+
+.menu-item:disabled {
+  color: var(--ink-3);
+}
+
+.link-btn:disabled {
+  color: var(--ink-3);
+  text-decoration: none;
+}
+
+.menu-item svg {
+  width: 16px;
+  height: 16px;
+  flex: none;
+  color: var(--ink-2);
+}
+
+.menu-item .check {
+  color: var(--accent);
+}
+
+.menu-item .hint {
+  margin-left: auto;
+  color: var(--ink-3);
+  font-size: var(--text-xs);
+}
+
+.menu-sep {
+  height: 1px;
+  margin: 6px 4px;
+  background: var(--hairline);
+}
+
+.menu-item-note {
+  display: block;
+  margin-top: 2px;
+  color: var(--ink-3);
+  font-size: var(--text-xs);
+}
+
+.menu-note {
+  padding: 4px 10px 8px;
+  color: var(--ink-3);
+  font-size: var(--text-xs);
+  line-height: 1.45;
+}
+
+/* Range slider themed from the palette. */
+.slider {
+  --fill: 50%;
+  appearance: none;
+  width: 100%;
+  height: 20px;
+  background: transparent;
+  cursor: pointer;
+}
+
+.slider::-webkit-slider-runnable-track {
+  height: 4px;
+  border-radius: 4px;
+  background: linear-gradient(to right, var(--accent) var(--fill), #3a3a3a var(--fill));
+}
+
+.slider::-moz-range-track {
+  height: 4px;
+  border-radius: 4px;
+  background: #3a3a3a;
+}
+
+.slider::-moz-range-progress {
+  height: 4px;
+  border-radius: 4px;
+  background: var(--accent);
+}
+
+.slider::-webkit-slider-thumb {
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  margin-top: -7px;
+  border-radius: 50%;
+  background: #f4f4f4;
+  box-shadow: 0 1px 4px rgb(0 0 0 / 0.5);
+  transition: transform var(--fast) var(--ease-out);
+}
+
+.slider::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  border: 0;
+  border-radius: 50%;
+  background: #f4f4f4;
+  box-shadow: 0 1px 4px rgb(0 0 0 / 0.5);
+}
+
+.slider:active::-webkit-slider-thumb {
+  transform: scale(1.12);
+}
+
+.slider:focus-visible {
+  outline: none;
+}
+
+.slider:focus-visible::-webkit-slider-thumb {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.slider:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+/* Hairline progress used for encoding state; text always accompanies it. */
+.progress-line {
+  position: relative;
+  height: 2px;
+  overflow: hidden;
+  border-radius: 2px;
+  background: #2f2f2f;
+}
+
+.progress-line::after {
+  content: '';
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 35%;
+  background: var(--accent);
+  animation: progress-slide 1.2s var(--ease-out) infinite;
+}
+
+@keyframes progress-slide {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(290%);
+  }
+}
+
+/* Touch: every control reaches a comfortable target without changing the layout's vocabulary. */
+@media (pointer: coarse) {
+  .btn {
+    height: 42px;
+  }
+
+  .btn-sm {
+    height: 38px;
+  }
+
+  .icon-btn {
+    width: 40px;
+    height: 40px;
+  }
+
+  .menu-item {
+    min-height: 44px;
+  }
+
+  .slider {
+    height: 32px;
+  }
+
+  .slider::-webkit-slider-thumb {
+    width: 26px;
+    height: 26px;
+    margin-top: -11px;
+  }
+
+  .slider::-moz-range-thumb {
+    width: 26px;
+    height: 26px;
+  }
+}

@@ -1,0 +1,150 @@
+.topbar {
+  grid-area: top;
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  column-gap: 24px;
+  align-items: center;
+  height: var(--topbar-h);
+  padding: 0 22px;
+  border-bottom: 1px solid var(--hairline);
+  background: var(--ground);
+}
+
+.wordmark {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: var(--text-xl);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.wordmark .logo-mark {
+  flex: none;
+}
+
+.btn-count {
+  min-width: 22px;
+  height: 20px;
+  padding: 0 6px;
+  border-radius: 10px;
+  background: rgb(6 37 48 / 0.16);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  line-height: 20px;
+  text-align: center;
+}
+
+.btn-count-ghost {
+  background: var(--selected);
+  color: var(--ink-2);
+}
+
+.summary {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 6px;
+  min-width: 0;
+  overflow: hidden;
+  font-size: var(--text-sm);
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  white-space: nowrap;
+}
+
+.summary-dot,
+.summary-arrow {
+  color: var(--ink-3);
+}
+
+.summary-saving {
+  color: var(--accent);
+}
+
+.summary-left {
+  color: var(--ink-2);
+}
+
+/* The bar's bottom hairline doubles as batch progress. */
+.topbar-progress {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 1px;
+  background: var(--accent);
+  transform-origin: left center;
+  transition:
+    transform 400ms var(--ease-out),
+    opacity 600ms var(--ease-out);
+}
+
+.topbar-progress[data-done='true'] {
+  opacity: 0;
+}
+
+.topbar-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 16px;
+}
+
+@media (max-width: 1240px) {
+  .topbar-formats .topbar-label {
+    display: none;
+  }
+}
+
+@media (max-width: 1180px) {
+  .summary-left,
+  .summary-left + .summary-dot {
+    display: none;
+  }
+}
+
+@media (max-width: 860px) {
+  /* Keep three columns: the empty middle slot must not push the actions onto a second row. */
+  .topbar {
+    column-gap: 12px;
+    height: calc(var(--topbar-h) + env(safe-area-inset-top));
+    padding: env(safe-area-inset-top) max(14px, env(safe-area-inset-right)) 0 max(14px, env(safe-area-inset-left));
+  }
+
+  .summary {
+    display: none;
+  }
+
+  .topbar-actions {
+    gap: 8px;
+  }
+
+  /* Phones download from the bottom action bar instead. */
+  .topbar-export {
+    display: none;
+  }
+}
+
+.topbar-compact-icon {
+  display: none;
+}
+
+@media (max-width: 560px) {
+  .topbar-compact-icon {
+    display: block;
+  }
+
+  .topbar-label {
+    display: none;
+  }
+
+  .topbar .split > .btn-ghost:first-child {
+    padding: 0 10px;
+  }
+
+  .wordmark > span {
+    display: none;
+  }
+}
